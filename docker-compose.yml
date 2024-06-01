@@ -1,0 +1,11 @@
+version: '3'
+services:
+  node-backend:
+    build: ./30k
+    ports:
+      - "8000:8000"
+
+  react-frontend:
+    build: ./30fk
+    ports:
+      - "5713:5713"
