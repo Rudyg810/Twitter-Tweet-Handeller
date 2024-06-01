@@ -6,6 +6,6 @@ services:
       - "8000:8000"
 
   react-frontend:
-    build: ./30fk
+    build: ./30fks
     ports:
       - "5713:5713"

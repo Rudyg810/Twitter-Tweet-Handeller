@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.dark {
+  background-color: rgb(11, 23, 57);
+  color: #fff;
+}
+
+.light {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.dark-mode .input-field {
+  background-color: rgb(15, 23, 42); /* dark background color for input */
+  border-color: rgb(30, 41, 59); /* dark border color for input */
+  color: rgb(148, 163, 184); /* dark text color for input */
+}
+
+.light-mode .input-field {
+  background-color: #fff; /* light background color for input */
+  border-color: #d1d5db; /* light border color for input */
+  color: #374151; /* light text color for input */
+}
