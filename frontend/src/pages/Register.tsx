@@ -53,9 +53,9 @@ export function Register() {
   }
 
   return (
-    <div className=" font-mono flex justify-center items-center sm:m-64">
+    <div className=" font- flex justify-center items-center sm:m-64">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className=" font-mono space-y-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className=" font- space-y-6">
           <FormField
             control={form.control}
             name="email"
@@ -86,7 +86,7 @@ export function Register() {
               </FormItem>
             )}
           />
-          <Button className=" font-mono px-10" type="submit">
+          <Button className=" font- px-10" type="submit">
             Register
           </Button>
         </form>

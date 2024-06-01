@@ -16,7 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import config from "@/context/config";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "@/context/auth";
 import { jwtDecode } from "jwt-decode";
 
@@ -60,9 +60,9 @@ export function Login() {
   }
 
   return (
-    <div className=" font-mono flex justify-center items-center sm:m-64">
+    <div className=" font- flex justify-center items-center sm:m-64">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className=" font-mono space-y-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className=" font- space-y-6">
           <FormField
             control={form.control}
             name="email"
@@ -88,12 +88,13 @@ export function Login() {
                 </FormControl>
                 <FormDescription>
                   Please enter a password with at least 6 characters.
+                  Not Registered <Link className="text-blue-800 font-semibold underline" to={"/register"}>register</Link>
                 </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <Button className=" font-mono px-10" type="submit">
+          <Button className=" font- px-10" type="submit">
             Login
           </Button>
         </form>

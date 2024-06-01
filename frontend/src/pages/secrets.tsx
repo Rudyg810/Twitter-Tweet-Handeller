@@ -64,8 +64,8 @@ export function Secrets() {
       toast({
         title: "Error updating user information",
         description: (
-          <pre className="font-mono mt-2 w-[340px] rounded-md bg-red-950 p-4">
-            <code className="font-mono text-white">{(error as any).message}</code>
+          <pre className="font- mt-2 w-[340px] rounded-md bg-red-950 p-4">
+            <code className="font- text-white">{(error as any).message}</code>
           </pre>
         ),
       });
@@ -73,12 +73,12 @@ export function Secrets() {
   }
 
   return (
-    <div className="font-mono flex flex-col items-center space-y-6">
-      <h1 className="font-mono text-3xl font-bold bg-gradient-to-r from-blue-400 to-blue-800 bg-clip-text text-transparent">
+    <div className="font- flex flex-col items-center space-y-6">
+      <h1 className="font- text-3xl font-bold bg-gradient-to-r from-blue-400 to-blue-800 bg-clip-text text-transparent">
         Secrets Form
       </h1>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="font-mono w-2/3 space-y-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="font- w-2/3 space-y-6">
           <FormField
             control={form.control}
             name="username"
@@ -128,7 +128,7 @@ export function Secrets() {
             )}
           />
 
-          <Button className="font-mono px-10" type="submit">Submit</Button>
+          <Button className="font- px-10" type="submit">Submit</Button>
         </form>
       </Form>
     </div>

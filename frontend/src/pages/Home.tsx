@@ -16,9 +16,12 @@ import { cn } from "@/lib/utils";
 import Spinner from "@/components/Spinner";
 import { useAuthContext } from "@/context/auth";
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
+import { toast } from "@/components/ui/use-toast";
 
 
 const Home = () => {
+const navigate = useNavigate()
   const [status, setStatus] = useState('');
   const [history,setHistory] = useState({})
   const {userId} = useAuthContext();
@@ -95,6 +98,10 @@ let id = (jwtDecode(localStorage.getItem('auth') as string) as any)?.userId;
     } catch (error) {
       console.error('Error during automation:', error);
       setLoading(false)
+      navigate("/secret-keys")
+      toast({
+        title:"Please Update your Credentials first"
+      })
     }
   };
 
@@ -115,11 +122,11 @@ let id = (jwtDecode(localStorage.getItem('auth') as string) as any)?.userId;
                             src="https://img.icons8.com/fluency/48/twitter.png"
                             alt="twitter"
                           />
-                          <div className="text-lg sm:text-3xl ml-5 my-auto font-mono w-fit font-semibold">
+                          <div className="text-lg sm:text-3xl ml-5 my-auto font- w-fit font-semibold">
                             Get your trends back
                           </div>
                         </div>
-                        <div className="text-blue-500 italic font-mono sm:pl-80 pl-8">
+                        <div className="text-blue-500 italic font- sm:pl-80 pl-8">
                           #twitter
                         </div>
                       </span>
@@ -170,7 +177,7 @@ let id = (jwtDecode(localStorage.getItem('auth') as string) as any)?.userId;
         </div>
 
         <div onClick={handleAutomation} className="sm:ml-10 mt-5 flex justify-center items-center">
-          <Button className="rounded-none font-mono">Start the Automation</Button>
+          <Button className="rounded-none font-">Start the Automation</Button>
         </div>
         {loading && <div className="sm:ml-10 w-[200px] p-2">
           <Label>Check the Running Status</Label>

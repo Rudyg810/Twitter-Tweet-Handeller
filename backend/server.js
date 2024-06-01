@@ -143,28 +143,38 @@ DBconnect.dbconnection.then(()=>{
 app.post("/api/auth/register", auth.registerUser);
 app.post("/api/auth/login", auth.loginUser);
 app.put("/api/auth/user/:userId", auth.updateUserInfo); // Assuming userId is passed in the URL parameters
-app.post(`/api/automate/:userId`,async(req,res)=>{
-  let {userId} = req.params;
-  let {ip} = req.body
-  console.log(userId)
-  let u = await usermodel.findOne({_id:userId});
-  if(!u){
-    res.status(404).json({message:"User not found"});
-    console.log("jsfhbd")
+app.post(`/api/automate/:userId`, async (req, res) => {
+  try {
+    let { userId } = req.params;
+    let { ip } = req.body;
+    console.log(userId);
+    let u = await usermodel.findOne({ _id: userId });
+    if (!u) {
+      res.status(404).json({ message: "User not found" });
+      console.log("User not found");
+      return; // Exit the function if user not found
+    }
+
+    console.log(u);
+
+    if (!u.twitterId) {
+      res.status(404).json({ message: "Twitter Id not found" });
+      console.log("Twitter Id not found");
+      return; // Exit the function if Twitter ID not found
+    }
+
+    let email = u.twitterId.email;
+    let username = u.twitterId.username;
+    let password = u.twitterId.password;
+
+    await openChrome(userId, email, username, password, ip);
+
+  } catch (error) {
+    console.error("Error occurred:", error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
-  console.log(u)
-  if(!u.twitterId){
-    res.status(404).json({message:"Twitter Id not found"});
-    console.log("jsfhbd")
+});
 
-  }
-  let email = u.twitterId.email
-let username =  u.twitterId.username
-
-
-let password =  u.twitterId.password
-  openChrome(userId,email,username,password,ip)
-})
 app.get('/hashtags/user/:userId', async (req, res) => {
   try {
     const userId = req.params.userId;
