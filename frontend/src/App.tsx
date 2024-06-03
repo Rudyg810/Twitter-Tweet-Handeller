@@ -7,6 +7,7 @@ import { Secrets } from './pages/secrets';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import Private from './context/Private';
+import Display from './pages/Display';
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -30,6 +31,7 @@ function App() {
         <Route path="/" element={<Private Component={Home} />} />
         <Route path="/secret-keys" element={<Private Component={Secrets} />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/all-tweets" element={<Display />} />
         <Route path="/register" element={<Register />} />
       </Routes>
       <br />

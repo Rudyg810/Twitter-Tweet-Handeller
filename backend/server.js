@@ -142,6 +142,14 @@ DBconnect.dbconnection.then(()=>{
 })// Define routes
 app.post("/api/auth/register", auth.registerUser);
 app.post("/api/auth/login", auth.loginUser);
+app.get("/api/hashtags/getall", async (req, res) => {
+  try {
+    const data = await Hashtag.find({});
+    res.status(200).json({ hashtags: data });
+  } catch (err) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 app.put("/api/auth/user/:userId", auth.updateUserInfo); // Assuming userId is passed in the URL parameters
 app.post(`/api/automate/:userId`, async (req, res) => {
   try {
